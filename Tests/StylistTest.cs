@@ -25,6 +25,16 @@ namespace HairSalon
       Stylist testStylist = new Stylist("Nathan Otto");
       testStylist.Save();
 
+      List<Stylist> result = Stylist.GetAll();
+      List<Stylist> testList = new List<Stylist>{testStylist};
+
+      Assert.Equal(testList, result);
+    }
+    [Fact]
+    public void Test_Save_AssignsIdToStylistObject()
+    {
+      Stylist testStylist = new Stylist("Nathan Otto");
+
       Stylist savedStylist = Stylist.GetAll()[0];
 
       int result = savedStylist.GetId();
