@@ -19,6 +19,36 @@ namespace HairSalon
 
       Assert.Equal(0, result);
     }
-    
+    [Fact]
+    public void Test_EqualOverrideTrueForSameName()
+    {
+      Client testClient1 = new Client("John Doe", 1);
+      Client testClient2 = new Client("John Doe", 1);
+
+      Assert.Equal(testClient1, testClient2);
+    }
+    [Fact]
+    public void Test_Save_SavesClientToDatabase()
+    {
+      Client testClient = new Client("John Doe", 1);
+      testClient.Save();
+
+      List<Client> result = Client.GetAll();
+      List<Client> testList = new List<Client>{testClient};
+
+      Assert.Equal(testList, result);
+    }
+    [Fact]
+    public void Test_Save_AssignsIdToClientObject()
+    {
+      Client testClient = new Client("John Doe", 1);
+
+      Client savedClient = Client.GetAll()[0];
+
+      int result = savedClient.GetId();
+      int testId = testClient.GetId();
+
+      Assert.Equal(testId, result);
+    }
   }
 }
