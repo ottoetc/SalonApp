@@ -159,6 +159,8 @@ namespace HairSalon
       SqlParameter stylistIdParameter = new SqlParameter();
       stylistIdParameter.ParameterName = "@StylistId";
       stylistIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(stylistIdParameter);
+      
       rdr = cmd.ExecuteReader();
 
       while(rdr.Read())
