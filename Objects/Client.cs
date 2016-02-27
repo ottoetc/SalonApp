@@ -50,7 +50,7 @@ namespace HairSalon
     {
       return _stylistId;
     }
-    public void SetStylistId(id newStylistId)
+    public void SetStylistId(int newStylistId)
     {
       _stylistId = newStylistId;
     }
@@ -69,8 +69,8 @@ namespace HairSalon
       while(rdr.Read())
       {
         int clientId = rdr.GetInt32(0);
-        string clientName == rdr.GetString(1);
-        int clientStylistId == rdr.GetInt32(2);
+        string clientName = rdr.GetString(1);
+        int clientStylistId = rdr.GetInt32(2);
         Client newClient = new Client(clientName, clientStylistId, clientId);
         allClients.Add(newClient);
       }
@@ -203,7 +203,7 @@ namespace HairSalon
     public void Delete()
     {
       SqlConnection conn = DB.Connection();
-      conn.Open()
+      conn.Open();
 
       SqlCommand cmd = new SqlCommand("DELETE FROM clients WHERE id = @ClientId;", conn);
 
