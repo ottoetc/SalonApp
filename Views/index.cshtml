@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hair Salon</title>
+    <link href="../Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../Content/css/styles.css" rel="stylesheet" type="text/css">
+    <script src="../Content/js/jquery-1.12.0.js" type="text/javascript"></script>
+    <script src="../Content/js/bootstrap.min.js"></script>
+    <script src="../Content/js/scripts.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hair Salon</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Add New Stylist</h3>
+          <form action='/stylist/new' method='post'>
+            <label for="stylist-name">Enter Stylist Name</label>
+            <input name="stylist-name" type="text">
+            <button type="submit">Add</button>
+          </form>
+        </div>
+        <div class="col-sm-6">
+          <h3>All Stylists</h3>
+          @if (@Model.Count == 0)
+          {
+            <p>There are currently no stylists!</p>
+            <p>Use the form to the left to add a stylist</p>
+          }
+          <ul>
+            @foreach (var stylist in @Model)
+            {
+              <li><a href="/stylist/@stylist.GetId()">@stylist.GetName()</a> <a href="/stylist/edit/@stylist.GetId()">Edit</a> | <a href="/stylist/delete/@stylist.GetId()">Delete</a></li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
