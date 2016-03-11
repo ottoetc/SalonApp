@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Hair Salon</title>
+    <title>Shoe Store</title>
     <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
     <link href="/Content/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/Content/css/styles.css" rel="stylesheet" type="text/css">
@@ -13,17 +13,30 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1>Hair Salon</h1>
+        <h1>Shoe Brands</h1>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-          <h3><a href="/stylists">View Stylists</a></h3>
+          <h3>All Brands</h3>
+          <ul>
+            @foreach(var brand in @Model)
+            {
+              <li><a href="/brands/@brand.GetId()">@brand.GetName()</a></li>
+            }
+          </ul>
         </div>
         <div class="col-sm-6">
-          <h3><a href="/clients">View Clients</a></h3>
+          <h3>Add a Brand</h3>
+          <form action="/brands/new" method="post">
+            <label for="brand-name">Brand Name</label>
+            <input id="brand-name" name="brand-name" type="text">
+            <button type="submit">Add</button>
+          </form>
         </div>
       </div>
+      <p><a href="/">Home</a></p>
+    </div>
   </body>
 </html>

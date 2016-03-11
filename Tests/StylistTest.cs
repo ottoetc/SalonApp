@@ -42,7 +42,7 @@ namespace HairSalon
     public void Test_Save_AssignsIdToStylistObject()
     {
       Stylist testStylist = new Stylist("Nathan Otto");
-
+      testStylist.Save();
       Stylist savedStylist = Stylist.GetAll()[0];
 
       int result = savedStylist.GetId();
@@ -67,7 +67,9 @@ namespace HairSalon
       testStylist.Save();
 
       Client firstClient = new Client("John Doe", testStylist.GetId());
+      firstClient.Save();
       Client secondClient = new Client("Jane Doe", testStylist.GetId());
+      secondClient.Save();
 
       List<Client> testClientList = new List<Client> {firstClient, secondClient};
       List<Client> resultClientList = testStylist.GetClients();

@@ -42,7 +42,7 @@ namespace HairSalon
     public void Test_Save_AssignsIdToClientObject()
     {
       Client testClient = new Client("John Doe", 1);
-
+      testClient.Save();
       Client savedClient = Client.GetAll()[0];
 
       int result = savedClient.GetId();
@@ -65,7 +65,7 @@ namespace HairSalon
     {
       Client testClient = new Client("John Doe", 1);
       testClient.Save();
-      testClient.Update("Nathan Otto", 1);
+      testClient.Update("Nathan Otto");
 
       Client newClient = new Client("Nathan Otto", 1);
 
@@ -74,15 +74,14 @@ namespace HairSalon
     [Fact]
     public void Test_Delete_DeletesClientFromDatabase()
     {
-      Client testClient1 = new Client("John Doe");
+      Client testClient1 = new Client("John Doe", 1);
       testClient1.Save();
-
-      Client testClient2 = new Client("Nathan Otto");
+      Client testClient2 = new Client("Nathan Otto", 1);
       testClient2.Save();
 
-      testClient1.Delete();
+      testClient2.Delete();
       List<Client> resultClients = Client.GetAll();
-      List<Client> testClientList = new List<Client>{testClient2};
+      List<Client> testClientList = new List<Client>{testClient1};
 
       Assert.Equal(testClientList, resultClients);
     }
