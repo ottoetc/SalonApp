@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Delete Store</title>
+    <title>Hair Salon</title>
     <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
     <link href="/Content/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/Content/css/styles.css" rel="stylesheet" type="text/css">
@@ -13,12 +13,12 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1>Delete Store</h1>
+        <h1>Delete Stylist</h1>
       </div>
     </div>
     <div class="container">
       <h2>Are you sure you want to delete @Model.GetName()?</h2>
-      <form action="/store/delete/@Model.GetId()" method="post">
+      <form action="/stylist/delete/@Model.GetId()" method="post">
         <input type="hidden" name="_method" value="DELETE">
         <button type="submit">Delete</button>
       </form>

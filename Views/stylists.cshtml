@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Shoe Store</title>
+    <title>Hair Salon</title>
     <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
     <link href="/Content/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/Content/css/styles.css" rel="stylesheet" type="text/css">
@@ -13,25 +13,30 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1>Shoe Brands</h1>
+        <h1>Hair Stylists</h1>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-          <h3>All Brands</h3>
+          <h3>All Stylists</h3>
+          @if (@Model.Count == 0)
+          {
+            <p>There are currently no stylists!</p>
+            <p>Use the form to the right to add a stylist</p>
+          }
           <ul>
-            @foreach(var brand in @Model)
+            @foreach(var stylist in @Model)
             {
-              <li><a href="/brands/@brand.GetId()">@brand.GetName()</a></li>
+              <li><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a> | <a href="/stylist/delete/@stylist.GetId()">Delete</a> | <a href="/stylist/edit/@stylist.GetId()">Edit</a></li>
             }
           </ul>
         </div>
         <div class="col-sm-6">
-          <h3>Add a Brand</h3>
-          <form action="/brands/new" method="post">
-            <label for="brand-name">Brand Name</label>
-            <input id="brand-name" name="brand-name" type="text">
+          <h3>Add a Stylist</h3>
+          <form action="/stylists/new" method="post">
+            <label for="stylist-name">Stylist Name</label>
+            <input id="stylist-name" name="stylist-name" type="text">
             <button type="submit">Add</button>
           </form>
         </div>
